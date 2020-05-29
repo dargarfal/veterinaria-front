@@ -6,7 +6,8 @@ const Pacientes = ({citas}) => {
   if(citas.length === 0){
     return null;
   }
-  
+
+   
   return ( 
     <Fragment>
       <h1 className="my-5">Administrador de pacientes</h1>
@@ -17,8 +18,10 @@ const Pacientes = ({citas}) => {
           </div>
             <div className="col-md-8 mx-auto">
               <div className="list-group">
-                {citas.map(cita => (
-                  <Link key={cita._id}  to={`/cita/${cita._id}`} className="p-5 list-group-item list-group-item-action flex-column aling-items-start">
+                {citas.map(cita => (  
+                  
+                   <Link key={cita._id}  to={`/cita/${cita._id}`} className="p-5 list-group-item list-group-item-action flex-column aling-items-start">
+                   
                     <div className="d-flex w-100 justify-content-between mb-4">
                       <h3 className="mb-3"> {cita.nombre} </h3>
                       <small className="fecha-alta"> {cita.fecha} - {cita.hora} </small>
@@ -29,6 +32,7 @@ const Pacientes = ({citas}) => {
                       <p> Telefono: {cita.telefono}</p>
                     </div>
                   </Link>
+                 
                 ))}
               </div>
             </div>
