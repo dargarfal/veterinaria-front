@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 //importando axios
 import clienteAxios from '../config/axios';
+import Swal from 'sweetalert2'
 
 const NuevaCita = (props) => {
 //Generar state como objeto
@@ -26,8 +27,28 @@ function leerDatos(e){
 const crearCita = e => {
   e.preventDefault();
 
+  
   //enviar peticion por axios
-  clienteAxios.post('/pacientes', cita)
+  /*clienteAxios.post('/pacientes', cita)
+                .then(res => {
+                  console.log(res);
+                  props.guardarConsultar(true);
+                  props.history.push('/');
+                })
+                .catch(error => {
+                  console.log(error);
+                  
+                })*/
+
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Cita creada',
+                  showConfirmButton: false,
+                  timer: 2000
+                })
+                .then((result) => {
+                  clienteAxios.post('/pacientes', cita)
                 .then(res => {
                   console.log(res);
                   props.guardarConsultar(true);
@@ -37,6 +58,7 @@ const crearCita = e => {
                   console.log(error);
                   
                 })
+                })              
 }
 
   return ( 
